@@ -33,7 +33,7 @@ namespace No7.Solution
                 OneCurrencyLingth = int.Parse(ConfigurationManager.AppSettings["OneCurrencyLength"]);
                 Delimeter = ConfigurationManager.AppSettings["Delimeter"];
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 LotSize = 100000f;
                 NotesInLine = 3;
