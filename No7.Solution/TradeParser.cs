@@ -73,6 +73,7 @@ namespace No7.Solution
                     loger.Warn($"WARN: Trade amount on line {lineCount} not a valid integer: '{fields[1]}'");
                 }
 
+                // TODO: Абстрагироваться от настроек культуры
                 if (!decimal.TryParse(fields[(int)Values.TradePrice], NumberStyles.Any, CultureInfo.InvariantCulture, out var tradePrice))
                 {
                     loger.Warn($"WARN: Trade price on line {lineCount} not a valid decimal: '{fields[2]}'");
