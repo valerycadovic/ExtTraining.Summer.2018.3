@@ -1,17 +1,17 @@
-﻿using System.Collections.Generic;
-using System.Configuration;
-using System.Data.SqlClient;
-using System.IO;
-
-namespace No7.Solution.Console
+﻿namespace No7.Solution.Console
 {
+    using System.Collections.Generic;
+    using System.Configuration;
+    using System.Data.SqlClient;
+    using System.IO;
+
     public class TradeHandler
     {
-        private static float LotSize = 100000f;
+        private const float LotSize = 100000f;
 
         public void HandleTrades(Stream stream)
         {
-
+            // чтение из файла
             var lines = new List<string>();
             using (var reader = new StreamReader(stream))
             {
@@ -21,33 +21,39 @@ namespace No7.Solution.Console
                     lines.Add(line);
                 }
             }
-
+            
+            // парсинг
             var trades = new List<TradeRecord>();
-
             var lineCount = 1;
             foreach (var line in lines)
             {
                 var fields = line.Split(new char[] { ',' });
 
+                // magic number
                 if(fields.Length != 3)
                 {
+                    // log
                     System.Console.WriteLine("WARN: Line {0} malformed. Only {1} field(s) found.", lineCount, fields.Length);
                     continue;
                 }
 
+                // magic number
                 if(fields[0].Length != 6)
                 {
+                    // log
                     System.Console.WriteLine("WARN: Trade currencies on line {0} malformed: '{1}'", lineCount, fields[0]);
                     continue;
                 }
 
                 if(!int.TryParse(fields[1], out var tradeAmount))
                 {
+                    // log
                     System.Console.WriteLine("WARN: Trade amount on line {0} not a valid integer: '{1}'", lineCount, fields[1]);
                 }
 
                 if(!decimal.TryParse(fields[2], out var tradePrice))
                 {
+                    // log
                     System.Console.WriteLine("WARN: Trade price on line {0} not a valid decimal: '{1}'", lineCount, fields[2]);
                 }
 

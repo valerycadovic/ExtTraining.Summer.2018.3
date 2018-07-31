@@ -31,6 +31,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -40,7 +41,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AbstractTradeSaver.cs" />
+    <Compile Include="ConsoleLoger.cs" />
+    <Compile Include="DatabaseTradeSaver.cs" />
+    <Compile Include="FileReader.cs" />
+    <Compile Include="IDataSaver.cs" />
+    <Compile Include="ILoger.cs" />
+    <Compile Include="IParser.cs" />
+    <Compile Include="AbstractStorageReader.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TradeImporter.cs" />
+    <Compile Include="TradeParser.cs" />
+    <Compile Include="TradeRecord.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

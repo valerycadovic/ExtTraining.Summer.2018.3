@@ -1,4 +1,6 @@
-﻿using System.Reflection;
+﻿using System.Configuration;
+using System.Reflection;
+using System;
 
 namespace No7.Solution.Console
 {
@@ -8,9 +10,15 @@ namespace No7.Solution.Console
         {
             var tradeStream = Assembly.GetExecutingAssembly().GetManifestResourceStream("No7.Solution.Console.trades.txt");
 
-            var tradeProcessor = new TradeHandler();
+            // Логер поправить
+            TradeImporter<Solution.TradeRecord> importer = new TradeImporter<Solution.TradeRecord>(
+                new DatabaseTradeSaver(ConfigurationManager.ConnectionStrings["TradeData"].ConnectionString), 
+                new FileReader<Solution.TradeRecord>(
+                    new TradeParser(new ConsoleLoger()), tradeStream));
 
-            tradeProcessor.HandleTrades(tradeStream);
+            importer.Import();
+
+            System.Console.ReadKey();
         }
     }
 }

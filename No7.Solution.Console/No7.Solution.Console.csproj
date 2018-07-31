@@ -76,15 +76,9 @@
     <EmbeddedResource Include="trades.txt" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="TradeDb.mdf" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="dbo.Insert_Trade.sql" />
     <Content Include="dbo.Trade.sql" />
     <Content Include="No7.txt" />
-    <Content Include="TradeDb_log.ldf">
-      <DependentUpon>TradeDb.mdf</DependentUpon>
-    </Content>
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.6">
