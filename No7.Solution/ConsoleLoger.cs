@@ -6,6 +6,10 @@ using System.Threading.Tasks;
 
 namespace No7.Solution
 {
+    /// <summary>
+    /// логирует в консоль
+    /// </summary>
+    /// <seealso cref="No7.Solution.ILoger" />
     public class ConsoleLoger : ILoger
     {
         public void Warn(string message)

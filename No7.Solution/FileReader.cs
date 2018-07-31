@@ -7,13 +7,18 @@ using System.Threading.Tasks;
 
 namespace No7.Solution
 {
+    /// <summary>
+    /// Читает данные любого типа из потока
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
+    /// <seealso cref="No7.Solution.AbstractStorageReader{T}" />
     public class FileReader<T> : AbstractStorageReader<T>
     {
         private readonly Stream stream;
 
         public FileReader(IParser<T> parser, Stream stream) : base(parser)
         {
-            this.stream = stream;
+            this.stream = stream ?? throw new ArgumentNullException($"{nameof(stream)} is null");
         }
 
         protected override string[] GetData()

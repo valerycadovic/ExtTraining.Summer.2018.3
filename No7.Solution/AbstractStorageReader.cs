@@ -6,6 +6,10 @@ using System.Threading.Tasks;
 
 namespace No7.Solution
 {
+    /// <summary>
+    /// Читает данные из хранилища и парсит в нужный тип
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
     public abstract class AbstractStorageReader<T>
     {
         private readonly IParser<T> parser;

@@ -1,5 +1,8 @@
 ﻿namespace No7.Solution
 {
+    /// <summary>
+    /// Требуемая модель
+    /// </summary>
     public class TradeRecord
     {
         public string DestinationCurrency { get; set; }

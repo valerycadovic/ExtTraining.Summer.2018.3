@@ -2,12 +2,13 @@
 using System.Collections.Generic;
 using System.Configuration;
 using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace No7.Solution
 {
+    /// <summary>
+    /// Реализация парсера для модели TradeRecord
+    /// </summary>
+    /// <seealso cref="No7.Solution.IParser{No7.Solution.TradeRecord}" />
     public class TradeParser : IParser<TradeRecord>
     {
         private static readonly float LotSize;
@@ -21,7 +22,7 @@ namespace No7.Solution
         private static readonly string Delimeter;
 
         private readonly ILoger loger;
-
+        
         static TradeParser()
         {
             try
@@ -30,6 +31,7 @@ namespace No7.Solution
                 LotSize = float.Parse(ConfigurationManager.AppSettings["LotSize"]);
                 CharsInCurrency = int.Parse(ConfigurationManager.AppSettings["CharsInCurrency"]);
                 OneCurrencyLingth = int.Parse(ConfigurationManager.AppSettings["OneCurrencyLength"]);
+                Delimeter = ConfigurationManager.AppSettings["Delimeter"];
             }
             catch (Exception e)
             {
@@ -37,12 +39,13 @@ namespace No7.Solution
                 NotesInLine = 3;
                 CharsInCurrency = 6;
                 OneCurrencyLingth = 3;
+                Delimeter = ",";
             }
         }
 
         public TradeParser(ILoger loger)
         {
-            this.loger = loger;
+            this.loger = loger ?? throw new ArgumentNullException($"{loger} is null");
         }
         
         // надо разделить, но не хватило времени вникнуть в логику 
@@ -58,25 +61,25 @@ namespace No7.Solution
                 // 
                 if (fields.Length != NotesInLine)
                 {
-                    loger.Warn($"WARN: Line {lineCount} malformed. Only {fields.Length} field(s) found.");
+                    loger.Warn($"Line {lineCount} malformed. Only {fields.Length} field(s) found.");
                     continue;
                 }
                 
                 if (fields[(int)Values.Currencies].Length != CharsInCurrency)
                 {
-                    loger.Warn($"WARN: Trade currencies on line {lineCount} malformed: '{fields[0]}'");
+                    loger.Warn($"Trade currencies on line {lineCount} malformed: '{fields[0]}'");
                     continue;
                 }
 
                 if (!int.TryParse(fields[(int)Values.TradeAmount], out var tradeAmount))
                 {
-                    loger.Warn($"WARN: Trade amount on line {lineCount} not a valid integer: '{fields[1]}'");
+                    loger.Warn($"Trade amount on line {lineCount} not a valid integer: '{fields[1]}'");
                 }
 
                 // TODO: Абстрагироваться от настроек культуры
                 if (!decimal.TryParse(fields[(int)Values.TradePrice], NumberStyles.Any, CultureInfo.InvariantCulture, out var tradePrice))
                 {
-                    loger.Warn($"WARN: Trade price on line {lineCount} not a valid decimal: '{fields[2]}'");
+                    loger.Warn($"Trade price on line {lineCount} not a valid decimal: '{fields[2]}'");
                 }
 
                 var sourceCurrencyCode = fields[(int)Values.Currencies].Substring(0, OneCurrencyLingth);
@@ -98,6 +101,9 @@ namespace No7.Solution
             return trades.ToArray();
         }
 
+        /// <summary>
+        /// Именованные константы для парсинга
+        /// </summary>
         private enum Values
         {
             Currencies,

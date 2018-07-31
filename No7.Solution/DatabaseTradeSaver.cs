@@ -7,6 +7,10 @@ using System.Threading.Tasks;
 
 namespace No7.Solution
 {
+    /// <summary>
+    /// Сохраняет объект TradeRecord в базу данных
+    /// </summary>
+    /// <seealso cref="No7.Solution.AbstractTradeSaver" />
     public class DatabaseTradeSaver : AbstractTradeSaver
     {
         private readonly string connectionString;
