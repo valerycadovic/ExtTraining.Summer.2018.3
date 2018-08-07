@@ -1,8 +1,11 @@
-﻿namespace No7.Solution
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace No7.Solution
 {
-    /// <summary>
-    /// Требуемая модель
-    /// </summary>
     public class TradeRecord
     {
         public string DestinationCurrency { get; set; }

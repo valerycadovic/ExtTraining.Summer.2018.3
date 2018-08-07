@@ -1,5 +1,7 @@
 ﻿using System.Configuration;
+using System.IO;
 using System.Reflection;
+using DataExportLib;
 
 namespace No7.Solution.Console
 {
@@ -7,18 +9,16 @@ namespace No7.Solution.Console
     {
         static void Main(string[] args)
         {
-            var tradeStream = Assembly.GetExecutingAssembly().GetManifestResourceStream("No7.Solution.Console.trades.txt");
+            Stream tradeStream = Assembly.GetExecutingAssembly().GetManifestResourceStream("No7.Solution.Console.trades.txt");
+            string connectionString = ConfigurationManager.ConnectionStrings["TradeData"].ConnectionString;
+            
+            TradeImportService service = TradeImportService.Instance;
 
-            // Логер поправить
-            // Класс TradeImporter позволяет читать и записывать данные и не зависит от их моделей способа хранения
-            TradeImporter<Solution.TradeRecord> importer = new TradeImporter<Solution.TradeRecord>(
-                new DatabaseTradeSaver(ConfigurationManager.ConnectionStrings["TradeData"].ConnectionString), 
-                new FileReader<Solution.TradeRecord>(
-                    new TradeParser(new ConsoleLoger()), tradeStream));
-
-            // Читает из заданного хранилище в другое заданное хранилище
-            importer.Import();
-
+            service.Import(
+                new TradeFileReader(tradeStream), 
+                new TradeRecordParser(new []{ new TradeRecordValidator() }), 
+                new DatabaseTradeSaver(connectionString));
+            
             System.Console.ReadKey();
         }
     }

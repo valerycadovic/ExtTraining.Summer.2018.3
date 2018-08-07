@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "No7.Solution", "No7.Solutio
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "No7.Solution.Console", "No7.Solution.Console\No7.Solution.Console.csproj", "{0AD9D034-2218-440B-97EF-FF29528B1C0B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataExportLib", "DataExportLib\DataExportLib.csproj", "{A7F0AED5-0850-4F39-858D-A2E55B6D4691}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{0AD9D034-2218-440B-97EF-FF29528B1C0B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0AD9D034-2218-440B-97EF-FF29528B1C0B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0AD9D034-2218-440B-97EF-FF29528B1C0B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A7F0AED5-0850-4F39-858D-A2E55B6D4691}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A7F0AED5-0850-4F39-858D-A2E55B6D4691}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A7F0AED5-0850-4F39-858D-A2E55B6D4691}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A7F0AED5-0850-4F39-858D-A2E55B6D4691}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

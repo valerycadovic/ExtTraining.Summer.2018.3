@@ -1,17 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace No7.Solution
+﻿namespace No7.Solution
 {
-    /// <summary>
-    /// Сохраняет объект TradeRecord в базу данных
-    /// </summary>
-    /// <seealso cref="No7.Solution.AbstractTradeSaver" />
-    public class DatabaseTradeSaver : AbstractTradeSaver
+    using System.Collections.Generic;
+    using System.Data.SqlClient;
+    using DataExportLib;
+
+    public class DatabaseTradeSaver : IDataSaver<TradeRecord>
     {
         private readonly string connectionString;
 
@@ -20,7 +13,7 @@ namespace No7.Solution
             this.connectionString = connectionString;
         }
 
-        protected override void SaveToStorage(TradeRecord[] data)
+        public void Save(IEnumerable<TradeRecord> data)
         {
             using (var connection = new SqlConnection(connectionString))
             {

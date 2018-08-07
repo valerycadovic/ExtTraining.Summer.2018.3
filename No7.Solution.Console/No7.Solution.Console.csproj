@@ -8,7 +8,7 @@
     <OutputType>Exe</OutputType>
     <RootNamespace>No7.Solution.Console</RootNamespace>
     <AssemblyName>No7.Solution.Console</AssemblyName>
-    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <PublishUrl>publish\</PublishUrl>
@@ -26,6 +26,7 @@
     <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -67,6 +68,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\DataExportLib\DataExportLib.csproj">
+      <Project>{a7f0aed5-0850-4f39-858d-a2e55b6d4691}</Project>
+      <Name>DataExportLib</Name>
+    </ProjectReference>
     <ProjectReference Include="..\No7.Solution\No7.Solution.csproj">
       <Project>{926f47d1-2eab-42b9-b3d8-98f387af6ea6}</Project>
       <Name>No7.Solution</Name>

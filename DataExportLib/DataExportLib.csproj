@@ -4,14 +4,13 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{926F47D1-2EAB-42B9-B3D8-98F387AF6EA6}</ProjectGuid>
+    <ProjectGuid>{A7F0AED5-0850-4F39-858D-A2E55B6D4691}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>No7.Solution</RootNamespace>
-    <AssemblyName>No7.Solution</AssemblyName>
+    <RootNamespace>DataExportLib</RootNamespace>
+    <AssemblyName>DataExportLib</AssemblyName>
     <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -32,8 +31,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
-    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -42,19 +42,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="TradeFileReader.cs" />
-    <Compile Include="TradeImportService.cs" />
+    <Compile Include="IDataSaver.cs" />
+    <Compile Include="ILoger.cs" />
+    <Compile Include="IImportService.cs" />
+    <Compile Include="IParser.cs" />
+    <Compile Include="IStorageReader.cs" />
+    <Compile Include="IValidator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TradeRecord.cs" />
-    <Compile Include="TradeRecordParser.cs" />
-    <Compile Include="DatabaseTradeSaver.cs" />
-    <Compile Include="TradeRecordValidator.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\DataExportLib\DataExportLib.csproj">
-      <Project>{a7f0aed5-0850-4f39-858d-a2e55b6d4691}</Project>
-      <Name>DataExportLib</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
