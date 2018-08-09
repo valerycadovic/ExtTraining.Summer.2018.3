@@ -1,4 +1,6 @@
-﻿namespace No7.Solution
+﻿using System.Globalization;
+
+namespace No7.Solution
 {
     using System;
     using System.Collections.Generic;
@@ -34,7 +36,8 @@
             string destinationCurrencyCode = fields[(int)Values.Currencies].Substring(OneCurrencyLength, OneCurrencyLength);
 
             int tradeAmount = int.Parse(fields[(int)Values.TradeAmount]);
-            decimal tradePrice = decimal.Parse(fields[(int)Values.TradePrice]);
+            decimal tradePrice = decimal.Parse(fields[(int)Values.TradePrice], NumberStyles.Any, CultureInfo.InvariantCulture);
+            //decimal.TryParse(fields[(int)Values.TradePrice], NumberStyles.Any, CultureInfo.InvariantCulture, out var tradePrice)
 
             var trade = new TradeRecord
             {
