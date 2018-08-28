@@ -4,8 +4,19 @@
     using System.Collections.Generic;
     using System.Linq;
 
-    public static class UriHelpers
+    /// <summary>
+    /// Set of <see cref="Uri"/> extension methods
+    /// </summary>
+    internal static class UriHelpers
     {
+        /// <summary>
+        /// Gets the parameters.
+        /// </summary>
+        /// <param name="uri">The URI.</param>
+        /// <returns>
+        /// Dictionary of keys and values of the url parameters list
+        /// </returns>
+        /// <exception cref="System.ArgumentNullException">Throws when uri is null</exception>
         public static Dictionary<string, string> GetParameters(this Uri uri)
         {
             if (uri == null)
