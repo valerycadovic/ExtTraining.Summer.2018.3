@@ -50,10 +50,7 @@
 
                 // valid segments
                 let segments = 
-                    (from s in uri.Segments
-                    select s.Replace("/", string.Empty) into clear
-                    where !string.IsNullOrEmpty(clear)
-                    select clear).ToList()
+                    uri.GetClearSegments().ToList()
 
                 select
                     new XElement("urlAddress",

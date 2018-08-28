@@ -48,5 +48,13 @@
 
             return result;
         }
+
+        public static IEnumerable<string> GetClearSegments(this Uri uri) =>
+            from s in uri.Segments
+            select s.Replace("/", string.Empty)
+                into clear
+            where !string.IsNullOrEmpty(clear)
+            select clear;
+
     }
 }
