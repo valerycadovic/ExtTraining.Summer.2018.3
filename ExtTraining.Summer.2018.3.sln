@@ -9,6 +9,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "No7.Solution.Console", "No7
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataExportLib", "DataExportLib\DataExportLib.csproj", "{A7F0AED5-0850-4F39-858D-A2E55B6D4691}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xml.Bll", "Xml.Bll\Xml.Bll.csproj", "{E9070999-C945-4287-8EE1-60ACFF105D83}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xml.CUI", "Xml.CUI\Xml.CUI.csproj", "{95A68505-8D1D-4DDB-924A-764C7CB31971}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +31,14 @@ Global
 		{A7F0AED5-0850-4F39-858D-A2E55B6D4691}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A7F0AED5-0850-4F39-858D-A2E55B6D4691}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A7F0AED5-0850-4F39-858D-A2E55B6D4691}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E9070999-C945-4287-8EE1-60ACFF105D83}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E9070999-C945-4287-8EE1-60ACFF105D83}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E9070999-C945-4287-8EE1-60ACFF105D83}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E9070999-C945-4287-8EE1-60ACFF105D83}.Release|Any CPU.Build.0 = Release|Any CPU
+		{95A68505-8D1D-4DDB-924A-764C7CB31971}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{95A68505-8D1D-4DDB-924A-764C7CB31971}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{95A68505-8D1D-4DDB-924A-764C7CB31971}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{95A68505-8D1D-4DDB-924A-764C7CB31971}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

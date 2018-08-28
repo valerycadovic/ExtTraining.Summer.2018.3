@@ -9,16 +9,20 @@ namespace No7.Solution.Console
     {
         static void Main(string[] args)
         {
-            Stream tradeStream = Assembly.GetExecutingAssembly().GetManifestResourceStream("No7.Solution.Console.trades.txt");
-            string connectionString = ConfigurationManager.ConnectionStrings["TradeData"].ConnectionString;
-            
-            TradeImportService service = TradeImportService.Instance;
+            using (Stream tradeStream = Assembly.GetExecutingAssembly()
+                .GetManifestResourceStream("No7.Solution.Console.trades.txt"))
+            {
+                string connectionString = ConfigurationManager.ConnectionStrings["TradeData"].ConnectionString;
 
-            service.Import(
-                new TradeFileReader(tradeStream), 
-                new TradeRecordParser(new []{ new TradeRecordValidator() }), 
-                new DatabaseTradeSaver(connectionString));
-            
+                TradeImportService service = TradeImportService.Instance;
+
+                service.Import(
+                    new TradeFileReader(tradeStream),
+                    new TradeRecordParser(new[] {new TradeRecordValidator()}),
+                    new DatabaseTradeSaver(connectionString),
+                    new NLogLogger());
+            }
+
             System.Console.ReadKey();
         }
     }

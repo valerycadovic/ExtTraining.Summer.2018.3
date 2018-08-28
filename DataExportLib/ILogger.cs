@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace DataExportLib
+﻿namespace DataExportLib
 {
-    public interface ILoger
+    public interface ILogger
     {
         void Warn(string message);
 

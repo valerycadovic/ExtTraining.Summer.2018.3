@@ -26,7 +26,7 @@
         }
 
         public void Import(IStorageReader<string> reader, IParser<string, TradeRecord> parser, IDataSaver<TradeRecord> saver,
-            ILoger loger)
+            ILogger logger)
         {
             ValidateOnNull(reader, nameof(reader));
             ValidateOnNull(parser, nameof(parser));
@@ -43,13 +43,13 @@
                 }
                 catch (Exception e) //TODO: ValidationException (custom)
                 {
-                    loger?.Warn($"{e.Message} {{line #{i}}}");
+                    logger?.Warn($"{e.Message} {{line #{i}}}");
                 }
             }
 
             saver.Save(records);
 
-            loger?.Info("Success");
+            logger?.Info("Success");
         }
 
         private static void ValidateOnNull<T>(T obj, string name) where T : class
